@@ -12,7 +12,7 @@ const displaytCategory = (data) => {
   data.forEach((data) => {
     const category = document.createElement("div");
     category.innerHTML = `<button
-    class=" text-xs font-semibold px-4 py-1 bg-gray-300 rounded-sm hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500">${data.category}
+    class=" text-xs md:text-md font-semibold px-4 py-1 bg-gray-300 rounded-sm hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500">${data.category}
     </button>`;
     categoryContainer.appendChild(category);
   });
