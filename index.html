@@ -17,25 +17,52 @@
   </head>
   <body>
     <header>
-      <nav class="mt-4 mx-10">
+      <nav class="container mx-auto px-2 lg:px-10">
         <div class="navbar bg-base-100 py-6 border-b-2 border-b-slate-400">
           <div class="navbar-start">
             <div class="lg:hidden">
-              <button class=" text-xs font-semibold px-1 mr-3 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white">SORT</button>
+              <button
+                class="text-xs font-semibold px-1 mr-3 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white"
+              >
+                SORT
+              </button>
             </div>
-            <a class="text-2xl font-bold"
+            <a class="sm:text-xl md:text-2xl font-bold"
               ><i class="text-red-500 fa-solid fa-circle-play"> </i>
               <span class="text-red-500">PH</span> Tube</a
             >
           </div>
           <div class="navbar-center hidden lg:flex">
-            <button class=" font-semibold px-4 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white">Sort By View</button>
+            <button
+              class="font-semibold px-4 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white"
+            >
+              Sort By View
+            </button>
           </div>
           <div class="navbar-end">
-            <a class="font-semibold bg-red-500 text-white px-4 py-1 rounded-md hover:bg-green-500 text-lg">Blog</a>
+            <a
+              class="font-semibold bg-red-500 text-white px-4 py-1 rounded-md hover:bg-green-500 text-lg"
+              >Blog</a
+            >
           </div>
         </div>
       </nav>
     </header>
+
+    <main class="container mx-auto px-2 lg:px-10 my-6">
+      <section class="">
+        <div id="category-container" class=" flex mx-auto text-center gap-4 justify-center flex-wrap">
+            
+            <!-- <button
+              class=" font-semibold px-4 py-1 bg-gray-300 rounded-md hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500"
+            >
+              Sort By View
+            </button> -->
+           
+          </div>
+      </section>
+      
+    </main>
+    <script src="js/index.js"></script>
   </body>
 </html>
