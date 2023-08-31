@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PHeroTube</title>
-</head>
-<body>
-    
-</body>
+    <script
+      src="https://kit.fontawesome.com/ff45585129.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="mt-4 mx-10">
+        <div class="navbar bg-base-100">
+          <div class="navbar-start">
+            <div class="lg:hidden">
+              <button class=" text-xs font-semibold px-1 mr-3 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white">SORT</button>
+            </div>
+            <a class="text-2xl font-bold"
+              ><i class="text-red-500 fa-solid fa-circle-play"> </i>
+              <span class="text-red-500">PH</span> Tube</a
+            >
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <button class=" font-semibold px-4 py-1 bg-gray-300 rounded-md hover:bg-green-500 hover:text-white">Sort By View</button>
+          </div>
+          <div class="navbar-end">
+            <a class="bg-red-500 text-white px-4 py-1 rounded-md hover:bg-green-500 text-lg">Blog</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </body>
 </html>
