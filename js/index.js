@@ -5,6 +5,12 @@ const loadData = async () => {
   const dataNest = await res.json();
   const data = dataNest.data;
   displaytCategory(data);
+  defaultCategory(data);
+};
+const defaultCategory = (data) => {
+  const defaultId = data[0].category_id;
+  
+  displaySong(defaultId)
 };
 const displaytCategory = (data) => {
   const categoryContainer = document.getElementById("category-container");
@@ -14,12 +20,10 @@ const displaytCategory = (data) => {
     class=" text-xs md:text-xl font-semibold px-4 py-1 bg-gray-300 rounded-sm hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500">${data.category}
     </button>`;
     categoryContainer.appendChild(category);
-    return data.category_id;
-  });   
-  };
-;
+  });
+};
 
-const displaySong = async (dataId=1000) => {
+const displaySong = async (dataId) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${dataId}`
   );
@@ -50,7 +54,7 @@ const displaySong = async (dataId=1000) => {
               <div class="card-body pt-1 ">
                 <h2 class="card-title">${data.title}</h2>
                 <p>${data.authors[0].profile_name}</p>
-                <p>${data.others.views } views</p>
+                <p>${data.others.views} views</p>
                 
               </div>
             </div>
@@ -59,5 +63,5 @@ const displaySong = async (dataId=1000) => {
     cardContainer.appendChild(dataCard);
   });
 };
-displaySong()
+displaySong();
 loadData();
