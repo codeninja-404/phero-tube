@@ -13,7 +13,7 @@ const defaultCategory = (data, isSort) => {
 };
 const displaytCategory = (data, isSort) => {
   const categoryContainer = document.getElementById("category-container");
-  categoryContainer.innerHTML = "";
+  categoryContainer.innerHTML= "";
   data.forEach((data) => {
     const category = document.createElement("div");
     category.innerHTML = `<button onclick = "displaySong(${data.category_id} ,${isSort})"
