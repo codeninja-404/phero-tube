@@ -41,7 +41,6 @@ const displaySong = async (dataId) => {
       const mins = Math.floor(minsTotal % 60);
       return { h: hours, m: mins };
     };
-    
 
     const hoursAndMins = toHrAndMn(secounds);
     const dataCard = document.createElement("div");
@@ -53,11 +52,13 @@ const displaySong = async (dataId) => {
                 alt="Shoes"
                 class=" w-full  "
               />
-              <p class=" rounded-[6px] ${!isNaN(hoursAndMins.h) ? "py-1" : ""} ${!isNaN(hoursAndMins.h) ? "px-3" : ""} text-xs absolute bottom-2  rounded-sm bg-black/60 text-white right-4 "> ${
-                !isNaN(hoursAndMins.h) ?hoursAndMins.h + " hrs" : ""
+              <p class=" ${
+                !isNaN(hoursAndMins.h) ? "py-1" : ""
               } ${
-                !isNaN(hoursAndMins.m) ? hoursAndMins.m + " mins ago " : ""
-              } </p>
+      !isNaN(hoursAndMins.h) ? "px-3" : ""
+    } text-xs absolute bottom-2  rounded-[6px] bg-gray-900 text-white right-4 "> ${
+      !isNaN(hoursAndMins.h) ? hoursAndMins.h + " hrs" : ""
+    } ${!isNaN(hoursAndMins.m) ? hoursAndMins.m + " mins ago " : ""} </p>
             </figure>
             <div class="flex items-start pt-5">
               <div class="avatar">
@@ -67,10 +68,10 @@ const displaySong = async (dataId) => {
                   />
                 </div>
               </div>
-              <div class="card-body pt-1 ">
-                <h2 class="card-title">${data.title}</h2>
-                <p>${data.authors[0].profile_name}</p>
-                <p>${data.others.views} views</p>
+              <div class="card-body pt-1 flex-1">
+                <h2 class="card-title font-bold">${data.title}</h2>
+                <p class="text-sm text-gray-500 font-semibold">${data.authors[0].profile_name} <span>${(data.authors[0].verified ==="") ? '<i class="fa-solid fa-certificate text-blue-500"></i>' : ""}  ${(data.authors[0].verified ===!!true) ? '<i class="fa-solid fa-certificate text-blue-500"></i>' : ""}  </span></p>
+                <p class="text-sm text-gray-500 font-semibold">${data.others.views} views</p>
                 
               </div>
             </div>
