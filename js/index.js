@@ -4,8 +4,8 @@ const loadData = async (isSort) => {
   );
   const dataNest = await res.json();
   const data = dataNest.data;
-  displaytCategory(data,isSort);
-  defaultCategory(data,isSort);
+  displaytCategory(data, isSort);
+  defaultCategory(data, isSort);
 };
 const defaultCategory = (data, isSort) => {
   const defaultId = data[0].category_id;
@@ -183,7 +183,15 @@ const displaySong = async (dataId, isSort) => {
 };
 const sortByView = () => {
   let isSort = true;
-  loadData(isSort)
+  loadData(isSort);
 };
+const handleBlog = () => {
+  window.location.href = "blog.html";
+};
+
+const handleGoHome = () => {
+  window.location.href = "index.html";
+};
+
 displaySong();
 loadData();
