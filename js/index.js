@@ -184,7 +184,6 @@ const displaySong = async (dataId, isSort) => {
 const sortByView = () => {
   let isSort = true;
   loadData(isSort)
-  displaySong()
 };
 displaySong();
 loadData();
