@@ -16,7 +16,7 @@ const displaytCategory = (data) => {
   data.forEach((data) => {
     const category = document.createElement("div");
     category.innerHTML = `<button onclick = "displaySong(${data.category_id})"
-    class=" text-xs md:text-xl font-semibold px-4 py-1 bg-gray-300 rounded-sm hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500">${data.category}
+    class=" text-xs md:text-xl font-semibold px-4 py-1 bg-gray-300 rounded-md hover:bg-red-500 hover:text-white focus:text-white focus:bg-red-500">${data.category}
     </button>`;
     categoryContainer.appendChild(category);
   });
@@ -29,13 +29,11 @@ const displaySong = async (dataId) => {
   const dataNest = await res.json();
   const data = dataNest.data;
   const cardContainer = document.getElementById("card-container");
-  
+
   cardContainer.innerHTML = "";
   data.forEach((data) => {
     const secoundsStr = data.others.posted_date;
     const secounds = parseInt(secoundsStr);
-    // console.log(secounds);
-
     const toHrAndMn = (secounds) => {
       const minsTotal = Math.floor(secounds / 60);
       // console.log(minsTotal);
@@ -43,10 +41,10 @@ const displaySong = async (dataId) => {
       const mins = Math.floor(minsTotal % 60);
       return { h: hours, m: mins };
     };
+    
+
     const hoursAndMins = toHrAndMn(secounds);
-    
     const dataCard = document.createElement("div");
-    
     dataCard.innerHTML = `
     <div class="card h-full bg-base-100 ">
             <figure class=" bg-black h-48 overflow-y-hidden overflow-x-auto rounded-xl relative">
@@ -55,7 +53,11 @@ const displaySong = async (dataId) => {
                 alt="Shoes"
                 class=" w-full  "
               />
-              <p id="time" class=" text-xs absolute bottom-2 px-2 py-1 rounded-md bg-black/60 text-white right-4 "><span>${hoursAndMins?.h}</span> hrs <span>${hoursAndMins.m}</span> min ago</p>
+              <p class=" rounded-[6px] ${!isNaN(hoursAndMins.h) ? "py-1" : ""} ${!isNaN(hoursAndMins.h) ? "px-3" : ""} text-xs absolute bottom-2  rounded-sm bg-black/60 text-white right-4 "> ${
+                !isNaN(hoursAndMins.h) ?hoursAndMins.h + " hrs" : ""
+              } ${
+                !isNaN(hoursAndMins.m) ? hoursAndMins.m + " mins ago " : ""
+              } </p>
             </figure>
             <div class="flex items-start pt-5">
               <div class="avatar">
@@ -74,7 +76,6 @@ const displaySong = async (dataId) => {
             </div>
           </div>
     `;
-
     cardContainer.appendChild(dataCard);
   });
 };
