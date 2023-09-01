@@ -28,57 +28,88 @@ const displaySong = async (dataId) => {
   );
   const dataNest = await res.json();
   const data = dataNest.data;
+  const noData = document.getElementById("no-data");
   const cardContainer = document.getElementById("card-container");
 
+  noData.innerHTML = "";
   cardContainer.innerHTML = "";
-  data.forEach((data) => {
-    const secoundsStr = data.others.posted_date;
-    const secounds = parseInt(secoundsStr);
-    const toHrAndMn = (secounds) => {
-      const minsTotal = Math.floor(secounds / 60);
-      // console.log(minsTotal);
-      const hours = Math.floor(minsTotal / 60);
-      const mins = Math.floor(minsTotal % 60);
-      return { h: hours, m: mins };
-    };
 
-    const hoursAndMins = toHrAndMn(secounds);
-    const dataCard = document.createElement("div");
-    dataCard.innerHTML = `
-    <div class="card h-full bg-base-100 ">
-            <figure class=" bg-black h-48 overflow-y-hidden overflow-x-auto rounded-xl relative">
-              <img
-                src=${data.thumbnail}
-                alt="Shoes"
-                class=" w-full  "
-              />
-              <p class=" ${
-                !isNaN(hoursAndMins.h) ? "py-1" : ""
-              } ${
-      !isNaN(hoursAndMins.h) ? "px-3" : ""
-    } text-xs absolute bottom-2  rounded-[6px] bg-gray-900 text-white right-4 "> ${
-      !isNaN(hoursAndMins.h) ? hoursAndMins.h + " hrs" : ""
-    } ${!isNaN(hoursAndMins.m) ? hoursAndMins.m + " mins ago " : ""} </p>
-            </figure>
-            <div class="flex items-start pt-5">
-              <div class="avatar">
-                <div class="w-12 h-12 rounded-full">
-                  <img
-                    src=${data.authors[0].profile_picture}
-                  />
+  console.log(dataNest.status);
+  if (dataNest.status === true) {
+    data.forEach((data) => {
+      const secoundsStr = data.others.posted_date;
+      const secounds = parseInt(secoundsStr);
+      const toHrAndMn = (secounds) => {
+        const minsTotal = Math.floor(secounds / 60);
+        // console.log(minsTotal);
+        const hours = Math.floor(minsTotal / 60);
+        const mins = Math.floor(minsTotal % 60);
+        return { h: hours, m: mins };
+      };
+
+      const hoursAndMins = toHrAndMn(secounds);
+      const dataCard = document.createElement("div");
+      dataCard.innerHTML = `
+      <div class="card h-full bg-base-100 ">
+              <figure class=" bg-black h-48 overflow-y-hidden overflow-x-auto rounded-xl relative">
+                <img
+                  src=${data.thumbnail}
+                  alt="Shoes"
+                  class=" w-full  "
+                />
+                <p class=" ${!isNaN(hoursAndMins.h) ? "py-1" : ""} ${
+        !isNaN(hoursAndMins.h) ? "px-3" : ""
+      } text-xs absolute bottom-2  rounded-[6px] bg-gray-900 text-white right-4 "> ${
+        !isNaN(hoursAndMins.h) ? hoursAndMins.h + " hrs" : ""
+      } ${!isNaN(hoursAndMins.m) ? hoursAndMins.m + " mins ago " : ""} </p>
+              </figure>
+              <div class="flex items-start pt-5">
+                <div class="avatar">
+                  <div class="w-12 h-12 rounded-full">
+                    <img
+                      src=${data.authors[0].profile_picture}
+                    />
+                  </div>
+                </div>
+                <div class="card-body pt-1 flex-1">
+                  <h2 class="card-title font-bold">${data.title}</h2>
+                  <p class="text-sm text-gray-500 font-semibold">${
+                    data.authors[0].profile_name
+                  } <span>${
+        data.authors[0].verified === ""
+          ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
+          : ""
+      }  ${
+        data.authors[0].verified === !!true
+          ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
+          : ""
+      }  </span></p>
+                  <p class="text-sm text-gray-500 font-semibold">${
+                    data.others.views
+                  } views</p>
+                  
                 </div>
               </div>
-              <div class="card-body pt-1 flex-1">
-                <h2 class="card-title font-bold">${data.title}</h2>
-                <p class="text-sm text-gray-500 font-semibold">${data.authors[0].profile_name} <span>${(data.authors[0].verified ==="") ? '<i class="fa-solid fa-certificate text-blue-500"></i>' : ""}  ${(data.authors[0].verified ===!!true) ? '<i class="fa-solid fa-certificate text-blue-500"></i>' : ""}  </span></p>
-                <p class="text-sm text-gray-500 font-semibold">${data.others.views} views</p>
-                
-              </div>
             </div>
-          </div>
+      `;
+      cardContainer.appendChild(dataCard);
+    });
+  } else {
+    const dataCard = document.createElement("div");
+    dataCard.innerHTML = `
+    <div class="hero  ">
+  <div class="hero-content text-center py-32 ">
+    <div class="max-w-md">
+    <img class="my-6 shadow-2xl border-2 rounded-full w-4/12 mx-auto" src=${"/images/404.jpg"} />
+      <h1 class="text-4xl font-bold">Oops!! Sorry, There is no 
+      content here</h1>
+    </div>
+  </div>
+</div>
+
     `;
-    cardContainer.appendChild(dataCard);
-  });
+    noData.appendChild(dataCard);
+  }
 };
 displaySong();
 loadData();
