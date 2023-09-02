@@ -13,7 +13,7 @@ const defaultCategory = (data, isSort) => {
 };
 const displaytCategory = (data, isSort) => {
   const categoryContainer = document.getElementById("category-container");
-  categoryContainer.innerHTML= "";
+  categoryContainer.innerHTML = "";
   data.forEach((data) => {
     const category = document.createElement("div");
     category.innerHTML = `<button onclick = "displaySong(${data.category_id} ,${isSort})"
@@ -74,11 +74,7 @@ const displaySong = async (dataId, isSort) => {
                     <h2 class="card-title font-bold">${data.title}</h2>
                     <p class="text-sm text-gray-500 font-semibold">${
                       data.authors[0].profile_name
-                    } <span>${
-          data.authors[0].verified === ""
-            ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
-            : ""
-        }  ${
+                    } <span> ${
           data.authors[0].verified === !!true
             ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
             : ""
@@ -145,10 +141,6 @@ const displaySong = async (dataId, isSort) => {
                     <p class="text-sm text-gray-500 font-semibold">${
                       data.authors[0].profile_name
                     } <span>${
-          data.authors[0].verified === ""
-            ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
-            : ""
-        }  ${
           data.authors[0].verified === !!true
             ? '<i class="fa-solid fa-certificate text-blue-500"></i>'
             : ""
